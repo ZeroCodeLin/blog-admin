@@ -11,29 +11,18 @@ class Editor extends Component {
         value:''
     }
     componentWillReceiveProps(nextProps) {
-        // Should be a controlled component.
-        if ('value' in nextProps) {
-          const value = nextProps.value;
-          editor.setValue(value?value:"")
-        }
+        
     }
     componentDidMount(){
-        // ClassicEditor
-        // .create( document.querySelector( '#editor' ),{
-        //     toolbar: [ 'headings', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote','code' ],
-        // } )
-        // .then( editor => {
-        //     console.log( editor );
-        // } )
-        // .catch( error => {
-        //     console.error( error );
-        // } );
         editor = new Simditor({
             textarea: $('#editor')
             //optional options
           });
         
-        console.log(this.props,'2')
+        editor.on("valuechanged",(e,src)=>{
+            // console.log(editor.getValue())
+            this.props.onChange(editor.getValue())
+        })
 
 
     }

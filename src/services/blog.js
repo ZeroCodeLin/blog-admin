@@ -14,3 +14,9 @@ export async function update(params) {
   });
 }
 
+export async function writeBlog(params) {
+  return request('/api/write/blog',{
+    method: 'POST',
+    body:params
+  })
+}

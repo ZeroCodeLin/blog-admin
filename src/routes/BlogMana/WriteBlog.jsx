@@ -6,6 +6,7 @@ import {
 } from 'antd';
 
 import Editor from './Editor.jsx'
+import { writeBlog } from "../../services/blog"
 
 const FormItem = Form.Item;
 const { Option } = Select;
@@ -16,12 +17,30 @@ const { TextArea } = Input;
     userData:state.user.userData,
   }))
 class BasicInfo extends Component {
-    
+    state={
+        editVal:""
+    }
+    onchangeEdit=(val)=>{
+        this.setState({
+            editVal: val
+        })
+    }
     handleSubmit = (e) => {
         e.preventDefault();
+        const content = this.state.editVal;
+        if(!content){
+            alert("请输入文章内容");
+            return
+        }
         this.props.form.validateFields((err, values) => {
           if (!err) {
-            console.log(values)
+            const params ={
+                ...values,
+                content,
+            }
+            writeBlog(params).then(data =>{
+                console.log(data)
+            })
           }
         });
       }
@@ -90,13 +109,8 @@ class BasicInfo extends Component {
                             {...formItemLayout}
                             label="内容"
                         >
-                            {getFieldDecorator('content', {                             
-                                rules: [{
-                                    required: true, message: '请输入内容',
-                                }],
-                            })(
-                                <Editor />
-                                )}
+                            <Editor onChange={this.onchangeEdit} />
+                                
                         </FormItem>
                         
                         
