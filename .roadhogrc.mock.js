@@ -108,4 +108,10 @@ const proxy = {
   },
 };
 
-export default noProxy ? {} : delay(proxy, 1000);
+// export default noProxy ? {} : delay(proxy, 1000);
+export default {
+  // 'GET /api/(.*)': 'http://192.168.2.72:10520/',
+  'POST /api/(.*)': 'http://127.0.0.1:3000',
+  // 'PUT /api/(.*)': 'http://192.168.2.72:10520/',
+  // 'DELETE /api/(.*)': 'http://192.168.2.72:10520/',
+};
