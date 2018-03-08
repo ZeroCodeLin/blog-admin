@@ -156,17 +156,17 @@ export default class Register extends Component {
         <h3>注册</h3>
         <Form onSubmit={this.handleSubmit}>
         <FormItem>
-            {getFieldDecorator('name', {
+            {getFieldDecorator('nick_name', {
               rules: [
                 {
                   required: true,
-                  message: '请输入用户名！',
+                  message: '请输入昵称！',
                 },
               ],
-            })(<Input size="large" placeholder="用户名" />)}
+            })(<Input size="large" placeholder="昵称" />)}
           </FormItem>
           <FormItem>
-            {getFieldDecorator('mail', {
+            {getFieldDecorator('email', {
               rules: [
                 {
                   required: true,

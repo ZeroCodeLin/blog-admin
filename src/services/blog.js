@@ -15,7 +15,7 @@ export async function update(params) {
 }
 
 export async function writeBlog(params) {
-  return request('/api/write/blog',{
+  return request('/api/blog/write',{
     method: 'POST',
     body:params
   })

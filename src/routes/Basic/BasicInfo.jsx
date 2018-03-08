@@ -118,7 +118,7 @@ class BasicInfo extends Component {
                             {...formItemLayout}
                             label="昵称"
                         >
-                            {getFieldDecorator('nickName', {
+                            {getFieldDecorator('nick_name', {
                                 initialValue:userData['nick_name'],
                                 rules: [{
                                     required: true, message: '请输入昵称',

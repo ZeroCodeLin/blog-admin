@@ -35,7 +35,7 @@ export default {
       const response = yield call(queryInfo);
       yield put({
         type:'getUserInfo',
-        payload:response,
+        payload:response.data[0],
       })
     },
   },
@@ -57,7 +57,7 @@ export default {
       
       return{
         ...state,
-        userData:action.payload.data,
+        userData:action.payload,
       }
     },
     saveCurrentUser(state, action) {
